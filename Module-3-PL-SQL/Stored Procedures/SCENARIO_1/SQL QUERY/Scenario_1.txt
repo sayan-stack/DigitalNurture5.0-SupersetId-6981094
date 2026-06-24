@@ -1,0 +1,24 @@
+Scenario 1: Process Monthly Interest for Savings Accounts
+
+Question: Write a stored procedure ProcessMonthlyInterest that calculates and updates the balance of all savings accounts by applying an interest rate of 1% to the current balance.
+
+Program: Process Monthly Interest for Savings Accounts
+
+CREATE OR REPLACE PROCEDURE ProcessMonthlyInterest
+IS
+BEGIN
+    UPDATE Accounts
+    SET Balance = Balance + (Balance * 0.01)
+    WHERE AccountType = 'Savings';
+
+    COMMIT;
+
+    DBMS_OUTPUT.PUT_LINE('Monthly interest processed successfully.');
+END;
+/
+
+
+BEGIN
+    ProcessMonthlyInterest;
+END;
+/

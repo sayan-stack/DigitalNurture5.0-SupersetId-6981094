@@ -1,0 +1,35 @@
+Scenario 1: Apply Interest Rate Discount for Senior Citizens
+
+Question: Write a PL/SQL block that loops through all customers, checks their age, and if they are above 60 years old, applies a 1% discount to their current loan interest rates.
+
+
+DECLARE
+    CURSOR cust_loan_cur IS
+    SELECT c.CustomerID,
+           c.DOB,
+           l.LoanID
+    FROM Customers c
+    JOIN Loans l
+    ON c.CustomerID = l.CustomerID;
+
+    v_age NUMBER;
+BEGIN
+    FOR rec IN cust_loan_cur LOOP
+
+        v_age := TRUNC(MONTHS_BETWEEN(SYSDATE, rec.DOB)/12);
+
+        IF v_age > 60 THEN
+            UPDATE Loans
+            SET InterestRate = InterestRate - 1
+            WHERE LoanID = rec.LoanID;
+
+            DBMS_OUTPUT.PUT_LINE(
+                'Discount applied to Loan ID ' || rec.LoanID
+            );
+        END IF;
+
+    END LOOP;
+
+    COMMIT;
+END;
+/
