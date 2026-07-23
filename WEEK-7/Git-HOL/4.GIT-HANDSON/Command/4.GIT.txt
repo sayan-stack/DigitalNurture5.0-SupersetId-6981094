@@ -1,0 +1,137 @@
+
+sayan@DESKTOP-F6MSF6O MINGW64 ~
+$ cd ~/GitDemo
+
+sayan@DESKTOP-F6MSF6O MINGW64 ~/GitDemo (master)
+$ git checkout master
+git status
+Already on 'master'
+Your branch is up to date with 'origin/master'.
+On branch master
+Your branch is up to date with 'origin/master'.
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        logdata.txt
+
+nothing added to commit but untracked files present (use "git add" to track)
+
+sayan@DESKTOP-F6MSF6O MINGW64 ~/GitDemo (master)
+$ git branch GitWork
+
+sayan@DESKTOP-F6MSF6O MINGW64 ~/GitDemo (master)
+$ git checkout GitWork
+Switched to branch 'GitWork'
+
+sayan@DESKTOP-F6MSF6O MINGW64 ~/GitDemo (GitWork)
+$ notepad hello.xml
+
+sayan@DESKTOP-F6MSF6O MINGW64 ~/GitDemo (GitWork)
+$ git status
+On branch GitWork
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        hello.xml
+        logdata.txt
+
+nothing added to commit but untracked files present (use "git add" to track)
+
+sayan@DESKTOP-F6MSF6O MINGW64 ~/GitDemo (GitWork)
+$ git add hello.xml
+git commit -m "Added hello.xml in GitWork"
+[GitWork df25eef] Added hello.xml in GitWork
+ 1 file changed, 1 insertion(+)
+ create mode 100644 hello.xml
+
+sayan@DESKTOP-F6MSF6O MINGW64 ~/GitDemo (GitWork)
+$ git checkout master
+Switched to branch 'master'
+Your branch is up to date with 'origin/master'.
+
+sayan@DESKTOP-F6MSF6O MINGW64 ~/GitDemo (master)
+$ git checkout master
+Already on 'master'
+Your branch is up to date with 'origin/master'.
+
+sayan@DESKTOP-F6MSF6O MINGW64 ~/GitDemo (master)
+$ notepad hello.xml
+
+sayan@DESKTOP-F6MSF6O MINGW64 ~/GitDemo (master)
+$ git add hello.xml
+git commit -m "Added hello.xml in master"
+fatal: pathspec 'hello.xml' did not match any files
+On branch master
+Your branch is up to date with 'origin/master'.
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        logdata.txt
+
+nothing added to commit but untracked files present (use "git add" to track)
+
+sayan@DESKTOP-F6MSF6O MINGW64 ~/GitDemo (master)
+$ git log --oneline --graph --decorate --all
+* df25eef (GitWork) Added hello.xml in GitWork
+* 7972ceb (HEAD -> master, origin/master) Added branch.txt in GitNewBranch
+* 427b050 Added .gitignore
+* 1314c4a First Commit
+
+sayan@DESKTOP-F6MSF6O MINGW64 ~/GitDemo (master)
+$ git diff master GitWork
+diff --git a/hello.xml b/hello.xml
+new file mode 100644
+index 0000000..573844c
+--- /dev/null
++++ b/hello.xml
+@@ -0,0 +1 @@
++<message>Hello from GitWork Branch</message>
+\ No newline at end of file
+
+sayan@DESKTOP-F6MSF6O MINGW64 ~/GitDemo (master)
+$ git merge GitWork
+Updating 7972ceb..df25eef
+Fast-forward
+ hello.xml | 1 +
+ 1 file changed, 1 insertion(+)
+ create mode 100644 hello.xml
+
+sayan@DESKTOP-F6MSF6O MINGW64 ~/GitDemo (master)
+$ notepad hello.xml
+
+sayan@DESKTOP-F6MSF6O MINGW64 ~/GitDemo (master)
+$ git add hello.xml
+
+sayan@DESKTOP-F6MSF6O MINGW64 ~/GitDemo (master)
+$ git commit -m "Resolved merge conflict"
+[master bd1ec28] Resolved merge conflict
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+sayan@DESKTOP-F6MSF6O MINGW64 ~/GitDemo (master)
+$ notepad .gitignore
+
+sayan@DESKTOP-F6MSF6O MINGW64 ~/GitDemo (master)
+$ git branch -d GitWork
+Deleted branch GitWork (was df25eef).
+
+sayan@DESKTOP-F6MSF6O MINGW64 ~/GitDemo (master)
+$ git log --oneline --graph --decorate
+* bd1ec28 (HEAD -> master) Resolved merge conflict
+* df25eef Added hello.xml in GitWork
+* 7972ceb (origin/master) Added branch.txt in GitNewBranch
+* 427b050 Added .gitignore
+* 1314c4a First Commit
+
+sayan@DESKTOP-F6MSF6O MINGW64 ~/GitDemo (master)
+$ git push
+Enumerating objects: 7, done.
+Counting objects: 100% (7/7), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (4/4), done.
+Writing objects: 100% (6/6), 611 bytes | 305.00 KiB/s, done.
+Total 6 (delta 2), reused 0 (delta 0), pack-reused 0 (from 0)
+remote: Resolving deltas: 100% (2/2), completed with 1 local object.
+To https://github.com/sayan-stack/GitDemo.git
+   7972ceb..bd1ec28  master -> master
+
+sayan@DESKTOP-F6MSF6O MINGW64 ~/GitDemo (master)
+$

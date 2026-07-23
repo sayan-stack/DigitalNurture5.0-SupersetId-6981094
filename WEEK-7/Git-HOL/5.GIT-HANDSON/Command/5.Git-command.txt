@@ -1,0 +1,44 @@
+
+sayan@DESKTOP-F6MSF6O MINGW64 ~
+$ cd ~/GitDemo
+
+sayan@DESKTOP-F6MSF6O MINGW64 ~/GitDemo (master)
+$ git checkout master
+M       .gitignore
+Already on 'master'
+Your branch is up to date with 'origin/master'.
+
+sayan@DESKTOP-F6MSF6O MINGW64 ~/GitDemo (master)
+$ git status
+On branch master
+Your branch is up to date with 'origin/master'.
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   .gitignore
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        logdata.txt
+        test.log
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+sayan@DESKTOP-F6MSF6O MINGW64 ~/GitDemo (master)
+$ git branch -a
+* master
+  remotes/origin/master
+
+sayan@DESKTOP-F6MSF6O MINGW64 ~/GitDemo (master)
+$ git pull origin master
+From https://github.com/sayan-stack/GitDemo
+ * branch            master     -> FETCH_HEAD
+Already up to date.
+
+sayan@DESKTOP-F6MSF6O MINGW64 ~/GitDemo (master)
+$ git push origin master
+Everything up-to-date
+
+sayan@DESKTOP-F6MSF6O MINGW64 ~/GitDemo (master)
+$

@@ -1,0 +1,112 @@
+
+sayan@DESKTOP-F6MSF6O MINGW64 ~
+$ cd ~/GitDemo
+
+sayan@DESKTOP-F6MSF6O MINGW64 ~/GitDemo (master)
+$ git branch
+* master
+
+sayan@DESKTOP-F6MSF6O MINGW64 ~/GitDemo (master)
+$ git branch GitNewBranch
+
+sayan@DESKTOP-F6MSF6O MINGW64 ~/GitDemo (master)
+$ git branch -a
+  GitNewBranch
+* master
+  remotes/origin/master
+
+sayan@DESKTOP-F6MSF6O MINGW64 ~/GitDemo (master)
+$ git checkout GitNewBranch
+Switched to branch 'GitNewBranch'
+
+sayan@DESKTOP-F6MSF6O MINGW64 ~/GitDemo (GitNewBranch)
+$ notepad branch.txt
+
+sayan@DESKTOP-F6MSF6O MINGW64 ~/GitDemo (GitNewBranch)
+$ git status
+On branch GitNewBranch
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        branch.txt
+        logdata.txt
+
+nothing added to commit but untracked files present (use "git add" to track)
+
+sayan@DESKTOP-F6MSF6O MINGW64 ~/GitDemo (GitNewBranch)
+$ git add branch.txt
+
+sayan@DESKTOP-F6MSF6O MINGW64 ~/GitDemo (GitNewBranch)
+$ git commit -m "Added branch.txt in GitNewBranch"
+[GitNewBranch 7972ceb] Added branch.txt in GitNewBranch
+ 1 file changed, 1 insertion(+)
+ create mode 100644 branch.txt
+
+sayan@DESKTOP-F6MSF6O MINGW64 ~/GitDemo (GitNewBranch)
+$ git status
+On branch GitNewBranch
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        logdata.txt
+
+nothing added to commit but untracked files present (use "git add" to track)
+
+sayan@DESKTOP-F6MSF6O MINGW64 ~/GitDemo (GitNewBranch)
+$ git checkout master
+Switched to branch 'master'
+Your branch is up to date with 'origin/master'.
+
+sayan@DESKTOP-F6MSF6O MINGW64 ~/GitDemo (master)
+$ git diff master GitNewBranch
+diff --git a/branch.txt b/branch.txt
+new file mode 100644
+index 0000000..3e18482
+--- /dev/null
++++ b/branch.txt
+@@ -0,0 +1 @@
++This file is created in GitNewBranch.
+\ No newline at end of file
+
+sayan@DESKTOP-F6MSF6O MINGW64 ~/GitDemo (master)
+$ git merge GitNewBranch
+Updating 427b050..7972ceb
+Fast-forward
+ branch.txt | 1 +
+ 1 file changed, 1 insertion(+)
+ create mode 100644 branch.txt
+
+sayan@DESKTOP-F6MSF6O MINGW64 ~/GitDemo (master)
+$ git log --oneline --graph --decorate
+* 7972ceb (HEAD -> master, GitNewBranch) Added branch.txt in GitNewBranch
+* 427b050 (origin/master) Added .gitignore
+* 1314c4a First Commit
+
+sayan@DESKTOP-F6MSF6O MINGW64 ~/GitDemo (master)
+$ git branch -d GitNewBranch
+Deleted branch GitNewBranch (was 7972ceb).
+
+sayan@DESKTOP-F6MSF6O MINGW64 ~/GitDemo (master)
+$ git status
+On branch master
+Your branch is ahead of 'origin/master' by 1 commit.
+  (use "git push" to publish your local commits)
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        logdata.txt
+
+nothing added to commit but untracked files present (use "git add" to track)
+
+sayan@DESKTOP-F6MSF6O MINGW64 ~/GitDemo (master)
+$ git push
+Enumerating objects: 4, done.
+Counting objects: 100% (4/4), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (2/2), done.
+Writing objects: 100% (3/3), 370 bytes | 185.00 KiB/s, done.
+Total 3 (delta 0), reused 0 (delta 0), pack-reused 0 (from 0)
+To https://github.com/sayan-stack/GitDemo.git
+   427b050..7972ceb  master -> master
+
+sayan@DESKTOP-F6MSF6O MINGW64 ~/GitDemo (master)
+$
+<message>Hello from Master Branch</message>
